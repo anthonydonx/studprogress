@@ -4,7 +4,7 @@
 <div class="container">
 </br>
 <div class="row">
-	<div class="col-md-8">
+	
 
 
 
@@ -48,4 +48,4 @@
    </div>
 
 
-<script src="<?php echo $this->webroot;?>js/logics/studreport.js"></script>
+<script src="<?php echo $this->webroot;?>js/logics/studentreport.js"></script>
