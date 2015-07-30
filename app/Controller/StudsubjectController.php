@@ -85,6 +85,20 @@ return json_encode($data);
 
  }
 
+ public function getSelectedStudentSubject(){
+  $this->autoRender = false;
+   $value = $this->request->data('studentID');
+    $this->loadModel("Students_subject");
+   $subt =$this->Students_subject->findAllByStudentsid( $value);
+   $data =array(
+      'Data' => $subt,
+      'error' => 'okey'
+    );
+
+return json_encode($data);
+
+ }
+
  public function index(){
 
  	$this->render('/add_students_subjects');

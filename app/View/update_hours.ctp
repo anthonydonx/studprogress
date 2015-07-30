@@ -16,8 +16,16 @@
 </br>
 
 <div class="form-group">
-<label for="title">Topic Title</label>
-<select  id="title" selected="">
+<label for="subject">Subjects </label>
+<select  name="subject" id="subject" selected="" >
+<option value="1">One</option>
+<option value="2">Two</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="topic">Topics</label>
+<select  id="topic" topic="">
 </select>
 </div>
 

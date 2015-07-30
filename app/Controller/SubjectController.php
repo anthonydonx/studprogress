@@ -48,8 +48,6 @@ public function index(){
 
 
 
-}
-
 
 
 ?>

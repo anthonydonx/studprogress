@@ -61,6 +61,18 @@ public function getRelatedTopics(){
     return json_encode($data);
 
 }
+public function getSubjectRelatedTopics(){
+   $this->autoRender = false; 
+     $value = $this->request->data('SubjectID');
+    $top = $this->Topic->findAllBySubjectsname($value);
+    $data= array(
+        'Data' => $top,
+        'error' => 'okay'
+
+      );
+
+    return json_encode($data);
+}
 
 public function index(){
 
