@@ -44,6 +44,8 @@ h4 {
 
 
  <h4><a href="updatehours">Update Hours</a></h4>
+
+ <h4><a href="studentreport">Student Report</a></h4>
 </br>
 
 
