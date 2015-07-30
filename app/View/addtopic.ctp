@@ -53,7 +53,7 @@
   	<thead>
        <tr>
 
-         <th>Subjects Name</th>
+       <!--   <th>Subjects Name</th> -->
          
           <th>Title</th>
 

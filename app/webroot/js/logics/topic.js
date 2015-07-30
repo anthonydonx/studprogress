@@ -1,4 +1,8 @@
 $(document).ready(function() {
+$( "#subjectsname" ).change();
+$( "#subjectsname" ).change(function() {
+  getSelectedSubjectTopics($( "#subjectsname" ).val());
+});
 
 $.ajax({
         url: "topic/getSubjects",
@@ -20,7 +24,7 @@ $('#subjectsname').append($("<option></option>")
 }
 });
 
-getTopics();    
+//getTopics();    
     $("#btn_add_topic").bind("click", function() {
         var subjectsname = $('#subjectsname').val();
         var title = $('#title').val();
@@ -34,9 +38,9 @@ getTopics();
             type: 'POST',
             success: function() {
                alert("Save Completed");
-               getTopics();
+               getSelectedSubjectTopics($( "#subjectsname" ).val());
          
-        $('#subjectsname').val('');   
+       
         $('#title').val('');
         $('#minhours').val('');
         $('#minrevisionhours').val('');
@@ -48,18 +52,18 @@ getTopics();
     });
 
 
-function getTopics() {
+function getSelectedSubjectTopics(selectedValue) {
    $("#accordion > tbody").html("");  
     $.ajax({
-        url: "topic/getTopic",
-        data: {},
+        url: "topic/getRelatedTopics",
+        data: {selectedSubject:selectedValue},
         type: 'POST',
         dataType: 'json',
         success: function(datat) {               
             for (i = 0; i < datat.Data.length; i++) {
                 var Str = '<tr class="active">';
                 
-                Str += '<td>'+datat.Data[i].Topic.subjectsname+'</td>';
+               // Str += '<td>'+datat.Data[i].Topic.subjectsname+'</td>';
                 Str += '<td>'+datat.Data[i].Topic.title+'</td>';
                 Str += ' <td>'+datat.Data[i].Topic.minimumhours+'</td>';
                 Str += '<td>'+datat.Data[i].Topic.minrevisionhours+'</td>';

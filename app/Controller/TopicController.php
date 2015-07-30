@@ -46,10 +46,12 @@ $this->set(array(
 
 }
 
-public function getTopic(){
+public function getRelatedTopics(){
+//echo ($this->request->params['selectedSubject']);
 
      $this->autoRender = false; 
-    $top = $this->Topic->find('all');
+     $value = $this->request->data('selectedSubject');
+    $top = $this->Topic->findAllBySubjectsname($value);
     $data= array(
         'Data' => $top,
         'error' => 'okay'
