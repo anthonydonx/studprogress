@@ -12,7 +12,7 @@ $this->loadModel("Student");
 $stdid = $this->Student->find('all');
 $iddata = array(
    'Data' => $stdid,
-   'error' => 'okay'
+   'error' => 'ok'
 
   );
 return json_encode($iddata);
@@ -33,7 +33,7 @@ public function getStudentreportname(){
      $rep = $this->Students_topic->findAllByStudentsid($value);
     $data= array(
         'Data' => $rep,
-        'error' => 'okay'
+        'error' => 'okayy'
 
     	);
 
@@ -47,7 +47,7 @@ public function getstudennameid(){
     $top = $this->Students_topic->findAllByStudentsid($value);
     $data= array(
         'Data' => $top,
-        'error' => 'okay'
+        'error' => 'okayyy'
 
       );
 
