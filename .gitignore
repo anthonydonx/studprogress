@@ -1,0 +1,10 @@
+CakePHP 3
+
+/vendor/*
+/tmp/*
+/logs/*
+
+CakePHP 2
+
+/app/tmp/*
+/vendors/*
