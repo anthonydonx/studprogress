@@ -14,7 +14,7 @@ $data= array(
         'Data' => $subjectsNames,
         'error' => 'okay'
 
-    	);
+      );
 
     return json_encode($data);
 
@@ -29,20 +29,20 @@ if($this->Topic->save($this->request->data)){
   $message = array(
       'text' => __('Saved'),
       'type' => 'succes'
-  	);
+    );
 
 }else{
-	$message = array(
+  $message = array(
        'text' => __('Error'),
        'type' => 'error'
        );
 }
 
 $this->set(array(
-	'message' => $message,
-	'_serialize' => array('message')
+  'message' => $message,
+  '_serialize' => array('message')
 
-	));
+  ));
 
 }
 
@@ -56,7 +56,7 @@ public function getRelatedTopics(){
         'Data' => $top,
         'error' => 'okay'
 
-    	);
+      );
 
     return json_encode($data);
 
@@ -76,7 +76,7 @@ public function getSubjectRelatedTopics(){
 
 public function index(){
 
-	$this->render('/addtopic');
+  $this->render('/addtopic');
 }
 
 

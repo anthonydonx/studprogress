@@ -4,11 +4,20 @@
 <div class="container">
 </br>
 <div class="row">
-	
+ <div class="col-md-8">	
 
+ <form>
 
+ 
+<div class="form-group">
+<label for="studentsid">Students ID </label>
+<select  name="studentsid" id="studentsid" selected="" >
+<option value="1">One</option>
+<option value="2">Two</option>
+</select>
+</div>
 
-
+ </form>	
 
 
 <div class="col-md-12">
@@ -46,6 +55,6 @@
 </div>
 	  </div>
    </div>
-
+ </div>
 
 <script src="<?php echo $this->webroot;?>js/logics/studentreport.js"></script>

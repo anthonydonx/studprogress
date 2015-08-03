@@ -1,14 +1,41 @@
 $(document).ready(function() {
+    $('#studentsid').change();
+    $('#studentsid').change(function(){
+         getreport($("#studentsid").val());
 
-getreport();
+    });
 
- });
+//getreport();
 
-function getreport() {
+ //});
+$.ajax({
+    url : "studentreport/reportstudentname",
+    data : {},
+    type : 'POST',
+    dataType : 'json',
+    success : function(rsid) {
+
+    $('#studentsid').empty();
+
+    for(i=0; i<rsid.Data.length; i++){
+      
+      $('#studentsid').append($("<option></option>")
+            .attr("value",rsid.Data[i].Student.id)
+            .text(rsid.Data[i].Student.fullname));
+
+
+    }
+
+    }
+    
+});
+
+
+function getreport(selectedValue) {
    $("#stureport_table > tbody").html("");  
     $.ajax({
-        url: "studentreport/getStudentreport",
-        data: {},
+        url: "studentreport/getStudentreportname",
+        data: {selectedStudent:selectedValue},
         type: 'POST',
         dataType: 'json',
         success: function(data) {               
@@ -31,3 +58,4 @@ function getreport() {
 }
 
 
+});
