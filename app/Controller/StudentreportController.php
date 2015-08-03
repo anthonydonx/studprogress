@@ -5,6 +5,7 @@ App::uses('AppController', 'Controller');
 
 class StudentreportController extends AppController {
 
+// select student box
   public function reportstudentname(){
 
 $this->autoRender = false;
@@ -24,7 +25,7 @@ return json_encode($iddata);
 
 
 
-
+// student progress table
 public function getStudentreportname(){
 
      $this->autoRender = false; 
@@ -41,17 +42,20 @@ public function getStudentreportname(){
 
 }
 
-public function getstudennameid(){
-   $this->autoRender = false; 
-     $value = $this->request->data('id');
-    $top = $this->Students_topic->findAllByStudentsid($value);
-    $data= array(
-        'Data' => $top,
-        'error' => 'okayyy'
+// Student details
+public function getstudentdetails(){
 
-      );
+$this->autoRender = false;
+$valued = $this->request->data('selectstudentdet');
+$this->loadModel("Student");
+$det = $this->Student->findAllByid($valued);
+$deti = array(
+       'Data' => $det,
+       'error' =>'okay'
 
-    return json_encode($data);
+	);
+return json_encode($deti);
+
 }
 
 

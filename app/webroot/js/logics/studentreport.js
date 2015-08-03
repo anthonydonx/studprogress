@@ -3,11 +3,12 @@ $(document).ready(function() {
     $('#studentsid').change(function(){
          getreport($("#studentsid").val());
 
-    });
+         getdetails($("#studentsid").val());
+  });
+ 
 
-//getreport();
 
- //});
+// student select box
 $.ajax({
     url : "studentreport/reportstudentname",
     data : {},
@@ -30,7 +31,7 @@ $.ajax({
     
 });
 
-
+// Table report ,according to student name
 function getreport(selectedValue) {
    $("#stureport_table > tbody").html("");  
     $.ajax({
@@ -56,6 +57,34 @@ function getreport(selectedValue) {
 
     });
 }
+
+// Table Student details
+
+function getdetails(selecteddetails){
+$("#studetails_table > tbody").html("");
+$.ajax({
+    url : "studentreport/getstudentdetails",
+    data: {selectstudentdet:selecteddetails},
+    type : 'POST',
+    dataType: 'json',
+    success: function(datad){
+            for (i = 0; i < datad.Data.length; i++) {
+                var Str = '<tr class="active">';
+                
+                Str += '<td>'+datad.Data[i].Student.fullname+'</td>';
+                Str += ' <td>'+datad.Data[i].Student.address+'</td>';
+                Str += ' <td>'+datad.Data[i].Student.mobile+'</td>';
+               
+                Str += '</tr>';
+                $("#studetails_table").find('tbody').append( Str );
+                
+            }
+        }
+
+    });
+}
+
+
 
 
 });

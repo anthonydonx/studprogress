@@ -19,14 +19,36 @@
 
  </form>	
 
-
 <div class="col-md-12">
-
-</br>
-<div class="alert alert-success" style="display:none;">
+	<div class="alert alert-success" style="display:none;">
 <span class="glyphicon glyphicon-ok"></span>
 </div>
+	
+<table class="table" id="studetails_table" name="studetails_table">
+ 
+<thead>
+<tr>
+<th>Full Name</th>
 
+<th>Address</th>
+
+<th>Mobile</th>
+
+
+</tr>
+</thead>
+
+<tbody>
+	</tbody>
+</table>
+
+
+</div>
+
+
+
+
+<div class="col-md-12">
 <table class="table" id="stureport_table" name="stureport_table">  
 
 
@@ -49,10 +71,16 @@
 <tbody>
 	</tbody>
 </table>
-
-
-
 </div>
+</br>
+</br>
+
+
+
+
+
+
+
 	  </div>
    </div>
  </div>
