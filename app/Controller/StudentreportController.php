@@ -59,6 +59,26 @@ return json_encode($deti);
 }
 
 
+//Student subject
+public function getstudentsubject(){
+
+$this->autoRender = false;
+$values = $this->request->data('selectedsubject');
+$this->loadModel("Students_subject");
+$subs = $this->Students_subject->findAllByStudentsid($values);
+  $subn = array(
+    'Data' => $subs,
+    'error' => 'okay'
+
+    );
+  return json_encode($subn);
+
+}
+
+
+
+
+
 
 public function index(){
 

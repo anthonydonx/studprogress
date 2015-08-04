@@ -44,6 +44,36 @@
 
 
 </div>
+</br>
+</br>
+
+
+<div class="col-md-12">
+<table class="table" id="stusubject_table" name="stusubject_table">  
+
+
+<thead>
+<tr>
+<th>Student ID</th>
+
+<th>Subject Name</th>
+
+<th>Status</th>
+
+
+
+
+
+</tr>
+</thead>
+
+<tbody>
+	</tbody>
+</table>
+</div>
+</br>
+</br>
+
 
 
 

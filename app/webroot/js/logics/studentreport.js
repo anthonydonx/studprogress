@@ -1,9 +1,11 @@
 $(document).ready(function() {
     $('#studentsid').change();
     $('#studentsid').change(function(){
-         getreport($("#studentsid").val());
+        getreport($("#studentsid").val());
 
-         getdetails($("#studentsid").val());
+        getdetails($("#studentsid").val());
+
+        getstudentssubject($("#studentsid").val());
   });
  
 
@@ -83,6 +85,39 @@ $.ajax({
 
     });
 }
+
+// Table student subject
+
+function getstudentssubject(selectedvalue){
+    $("#stusubject_table > tbody").html("");
+    $.ajax({
+          url : "studentreport/getstudentsubject",
+          data : {selectedsubject:selectedvalue},
+          type : 'POST',
+          dataType : 'json',
+          success : function(datas){
+             for(i = 0; i < datas.Data.length; i++){
+
+                var strs = '<tr class="active">';
+             strs += '<td>'+datas.Data[i].Students_subject.Studentsid+'</td>';
+             strs += '<td>'+datas.Data[i].Students_subject.Subjectsname+'</td>';
+
+                 strs +='</tr>';
+                 $("#stusubject_table").find('tbody').append(strs);
+
+
+
+
+             }
+
+          }
+
+       });
+     }
+
+
+
+
 
 
 

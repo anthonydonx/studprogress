@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+
 //student select box 
 $.ajax({
     url : "studsubject/getid",
@@ -82,13 +84,15 @@ $.ajax({
       dataType : 'json',
       success : function(sub){
         
-
+    
       for(i =0; i<sub.Data.length; i++){
        
        var str = '<tr class="active">';
 
        str += '<td>'+sub.Data[i].Students_subject.Studentsid+'</td>';
        str += '<td>'+sub.Data[i].Students_subject.Subjectsname+'</td>';
+       //str += '<td>'+sub.Data[i].Students_subject.spendhour+'</td>';
+       //str += '<td>'+sub.Data[i].Students_subject.revisionhour+'</td>';
 
        str +='<tr>';
        $("#studsub_table").find('tbody').append(str);

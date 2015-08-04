@@ -20,17 +20,21 @@
 <select  id="title" selected="">
 </select>
 </div>
-<!--
+
+
+
+
+
 <div class="form-group">
-	<label for="spendhours" >Spend Hours</label>
-	<input value="0" id="spendhours">
+	
+	<input type="hidden" value="0" id="spendhours">
 </div>
 
 <div class="form-group">
-	<label for="revisionhours" >Revision Hours</label>
-	<input value="0"  id="revisionhours" >
+	
+	<input type="hidden" value="0"  id="revisionhours" >
 </div>
--->
+
 <button type="button" class="btn btn-primary" id="btn_std_topics">Save</button>
 
 </form>
