@@ -85,7 +85,7 @@ return json_encode($data);
 
  }
 
- public function getSelectedStudentSubject(){
+ /* public function getSelectedStudentSubject(){
   $this->autoRender = false;
    $value = $this->request->data('studentID');
     $this->loadModel("Students_subject");
@@ -97,7 +97,29 @@ return json_encode($data);
 
 return json_encode($data);
 
- }
+ } */
+
+public function getselectedidsubject(){
+$this->autoRender = false;
+$value = $this->request->data('selectedidsubject');
+$this->loadModel("Students_subject");
+$sub = $this->Students_subject->findAllByStudentsid($value);
+$data = array(
+    'Data' => $sub,
+    'error' => 'okey'
+
+);
+return json_encode($data);
+
+
+
+
+}
+
+
+
+
+
 
  public function index(){
 

@@ -1,5 +1,8 @@
 $(document).ready(function(){
+$("#studentsid").change(function(){
+     getselectedstusubject($("#studentsid").val());
 
+});
 
 
 //student select box 
@@ -50,7 +53,8 @@ $.ajax({
 
 
 
-getstudsubject();
+//getstudsubject();
+//getselectedstusubject();
 
 $("#btn_std_subjects").bind("click",function() {
 	  var studentsid =$('#studentsid').val();
@@ -74,7 +78,7 @@ $("#btn_std_subjects").bind("click",function() {
 });
 
 
-function getstudsubject(){
+/*function getstudsubject(){
 
 $("#studsub_table > tbody").html("");
 $.ajax({
@@ -91,8 +95,7 @@ $.ajax({
 
        str += '<td>'+sub.Data[i].Students_subject.Studentsid+'</td>';
        str += '<td>'+sub.Data[i].Students_subject.Subjectsname+'</td>';
-       //str += '<td>'+sub.Data[i].Students_subject.spendhour+'</td>';
-       //str += '<td>'+sub.Data[i].Students_subject.revisionhour+'</td>';
+      
 
        str +='<tr>';
        $("#studsub_table").find('tbody').append(str);
@@ -102,7 +105,38 @@ $.ajax({
 
 });
 
-}
+} */
+
+
+function getselectedstusubject(selectedvalue){
+
+$("#studsub_table > tbody").html("");
+$.ajax({
+    url : "studsubject/getselectedidsubject",
+    data : {selectedidsubject:selectedvalue},
+    type : 'POST',
+     dataType: 'json',
+    success :function(data){
+
+        for(i=0; i<data.Data.length; i++){
+        
+         var str = '<tr class="active">';
+
+        str += '<td>'+data.Data[i].Students_subject.Studentsid+'</td>';
+        str += '<td>'+data.Data[i].Students_subject.Subjectsname+'</td>';
+
+         str += '</tr>';
+         $("#studsub_table").find('tbody').append(str);
+
+              }
+
+          }
+
+      });
+
+     }
+
+
 
 
 
