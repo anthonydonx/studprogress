@@ -20,6 +20,7 @@ h4 {
 <h2 >Students Progress System</h2>
 
 </head>
+</br>
 <body>
 
   <!--http://localhost/studprogress/student-->
@@ -44,6 +45,7 @@ h4 {
 
 
  <h4><a href="updatehours">Update Hours</a></h4>
+ </br>
 
  <h4><a href="studentreport">Student Report</a></h4>
 </br>

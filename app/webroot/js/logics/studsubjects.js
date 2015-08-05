@@ -1,7 +1,8 @@
 $(document).ready(function(){
 $("#studentsid").change(function(){
      getselectedstusubject($("#studentsid").val());
-
+     
+    
 });
 
 
@@ -66,11 +67,13 @@ $("#btn_std_subjects").bind("click",function() {
        type:'POST',
        success: function(){
        	alert("Save complete");
-       	getstudsubject();
+
+       	getselectedstusubject($("#studentsid").val());
+        //getstudsubject();
 
 
-      $('#studentsid').val('');
-      $('#subjectsname').val('');
+      //$('#studentsid').val('');
+      //$('#subjectsname').val('');
 
        }
 
@@ -78,7 +81,7 @@ $("#btn_std_subjects").bind("click",function() {
 });
 
 
-/*function getstudsubject(){
+function getstudsubject(){
 
 $("#studsub_table > tbody").html("");
 $.ajax({
@@ -105,7 +108,7 @@ $.ajax({
 
 });
 
-} */
+} 
 
 
 function getselectedstusubject(selectedvalue){

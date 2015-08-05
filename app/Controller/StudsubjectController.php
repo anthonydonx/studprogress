@@ -106,7 +106,7 @@ $this->loadModel("Students_subject");
 $sub = $this->Students_subject->findAllByStudentsid($value);
 $data = array(
     'Data' => $sub,
-    'error' => 'okey'
+    'error' => 'okeyy'
 
 );
 return json_encode($data);
