@@ -81,7 +81,7 @@ $("#btn_std_subjects").bind("click",function() {
 });
 
 
-function getstudsubject(){
+/*function getstudsubject(){
 
 $("#studsub_table > tbody").html("");
 $.ajax({
@@ -108,7 +108,7 @@ $.ajax({
 
 });
 
-} 
+} */
 
 
 function getselectedstusubject(selectedvalue){

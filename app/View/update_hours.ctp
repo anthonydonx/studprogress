@@ -1,4 +1,4 @@
-<h3>Follow up Topics</h3>
+<h3>Update hours</h3>
 <div class="container">
 </br>
 <div class="row">
@@ -25,7 +25,9 @@
 
 <div class="form-group">
 <label for="topic">Topics</label>
-<select  id="topic" topic="">
+<select  name="topic" id="topic" selected="">
+<option value="1">One</option>
+<option value="2">Two</option>
 </select>
 </div>
 

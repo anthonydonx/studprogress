@@ -82,6 +82,24 @@ return json_encode($datas);
 
  }
 
+public function getfolowuptopic(){
+
+$this->autoRender = false;
+$value = $this->request->data('selectedid');
+$this->loadModel("Students_topic");
+$topi = $this->Students_topic->findAllByStudentsid($value);
+$data = array(
+      'Data' => $topi,
+      'error' => 'okey'
+
+  );
+
+return json_encode($data);
+
+}
+
+
+
  public function index(){
 
  	$this->render('/add_students_topics');

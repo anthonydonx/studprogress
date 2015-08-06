@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  $("#studentsid").change();
+  $("#studentsid").change(function(){
+       gettopictitle($("#studentsid").val());
+
+
+  });
+
 //student select box 
 $.ajax({
     url : "studtopic/getids",
@@ -48,7 +55,7 @@ $.ajax({
 
 
 
-getstud_topics();
+//getstud_topics();
 
 $("#btn_std_topics").bind("click",function() {
 
@@ -64,11 +71,11 @@ $("#btn_std_topics").bind("click",function() {
        type:'POST',
        success: function(){
        	alert("Save complete");
-       	getstud_topics();
+       	gettopictitle($("#studentsid").val());
 
 
-      $('#studentsid').val('');
-      $('#title').val('');
+      //$('#studentsid').val('');
+      //$('#title').val('');
      
 
        }
@@ -77,7 +84,7 @@ $("#btn_std_topics").bind("click",function() {
 });
 
 
-function getstud_topics(){
+/*function getstud_topics(){
 
 $("#studtopic_table > tbody").html("");
 $.ajax({
@@ -104,8 +111,36 @@ $.ajax({
 
 });
 
-}
+}*/
 
+
+function gettopictitle(getvalue){
+
+$("#studtopic_table > tbody").html("");
+$.ajax({
+    url :"studtopic/getfolowuptopic",
+    data : {selectedid:getvalue},
+    type : 'POST',
+    dataType : 'json',
+    success : function(datas){
+
+     for(i=0; i<datas.Data.length; i++){
+
+     var str = '<tr class="active">';
+
+     str +='<td>'+datas.Data[i].Students_topic.Studentsid+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.Topicstitle+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.spendhours+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.revisionhours+'</td>';
+
+     str +='</tr>'
+     $("#studtopic_table").find('tbody').append(str);
+
+            }
+          }
+
+       });
+    }
 
 
 

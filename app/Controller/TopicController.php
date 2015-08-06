@@ -3,7 +3,6 @@
 App::uses('AppController', 'Controller');
 
 class TopicController extends AppController {
-
 //select box
 public function getSubjects(){
 
@@ -47,10 +46,11 @@ $this->set(array(
 }
 
 public function getRelatedTopics(){
-//echo ($this->request->params['selectedSubject']);
+
 
      $this->autoRender = false; 
      $value = $this->request->data('selectedSubject');
+     $this->loadModel("Topic");
     $top = $this->Topic->findAllBySubjectsname($value);
     $data= array(
         'Data' => $top,

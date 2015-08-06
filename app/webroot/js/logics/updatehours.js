@@ -1,15 +1,46 @@
 $(document).ready(function(){
 //Get all students
 getStudents();
+
+
 $( "#studentsid" ).change(function() {
- getSelectedStudentSubject($('#studentsid').val());
+  getSelectedSubject($('#studentsid').val());
+});
+
+$("#subject").change(function(){
+  gettitleRelated($('#subject').val());
+});
+
+
+$("#btn_std_topics").bind("click",function(){
+
+var studentname = $('#studentsid').val();
+var subject = $('#subject').val();
+var topic = $('#topic').val();
+var spendhours = $('#spendhours').val();
+var revisionhours = $('#revisionhours').val();
+
+$.ajax({
+   url : "updatehours/save_studtopic",
+   data : {},
+   type : 'POST',
+   success : function(data){
+
+     alert("Save completed");
+
+     $('#spendhours').val('');
+     $('#revisionhours').val('');
+
+
+   }
+
+});
 
 });
 	
-});
 
-function getStudents(){
 //Student select box 
+function getStudents(){
 $.ajax({
     url : "student/getStudent",
     data : {},
@@ -25,16 +56,17 @@ $.ajax({
          .attr("value",da.Data[i].Student.id)
          .text(da.Data[i].Student.fullname)); 
     }
-getSelectedStudentSubject($('#studentsid').val());
+ getSelectedSubject($('#studentsid').val());
     }
 
-});
+});   
 }
 
-function getSelectedStudentSubject(SelectStudent){
+
+function getSelectedSubject(SelectStudent){
 $.ajax({
-    url : "studsubject/getSelectedStudentSubject",
-    data : {studentID:SelectStudent},
+    url : "studsubject/getselectedidsubject",
+    data : {selectedidsubject:SelectStudent},
     type : 'POST',
     dataType : 'json',
     success : function(da)  {
@@ -48,16 +80,16 @@ $.ajax({
          .text(da.Data[i].Students_subject.Subjectsname)); 
     }
 
-    getSubjectRelatedTopics($('#subject').val());
+    gettitleRelated($('#subject').val());
     }
 
 });
 }
 
-function getSubjectRelatedTopics(Subjectname){
+function gettitleRelated(Subjectname){
 $.ajax({
-    url : "topic/getSubjectRelatedTopics",
-    data : {SubjectID:Subjectname},
+    url : "topic/getRelatedTopics",
+    data : {selectedSubject:Subjectname},
     type : 'POST',
     dataType : 'json',
     success : function(da)  {
@@ -70,9 +102,14 @@ $.ajax({
          .attr("value",da.Data[i].Topic.title)
          .text(da.Data[i].Topic.title)); 
     }
+
     }
 
 });
 
 
 }
+
+
+
+});
