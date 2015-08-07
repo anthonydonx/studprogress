@@ -30,6 +30,25 @@ public function save_studtopic(){
     	));
 
 }
+/*//get  value from Student_topics
+public function getspendhoursvalue(){
+
+$this->autoRender = false;
+$value = $this->request->data('selectedtopics');
+$this->loadModel("Students_topic");
+$topi = $this->Students_topic->findAllByTopicstitle($value);
+$data = array(
+      'Data' => $topi,
+      'error' => 'okey'
+
+  );
+
+return json_encode($data);
+
+}
+
+
+*/
 
 
 

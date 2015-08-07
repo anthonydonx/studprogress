@@ -12,32 +12,30 @@ $("#subject").change(function(){
 });
 
 
-$("#btn_std_topics").bind("click",function(){
 
-var studentname = $('#studentsid').val();
-var subject = $('#subject').val();
-var topic = $('#topic').val();
-var spendhours = $('#spendhours').val();
-var revisionhours = $('#revisionhours').val();
+$("#btn_std_topics").bind("click",function() {
 
-$.ajax({
-   url : "updatehours/save_studtopic",
-   data : {},
-   type : 'POST',
-   success : function(data){
+      var studentsid =$('#studentsid').val();
+      var title = $('#title').val();
+      var spendhours = $('#spendhours').val();
+    var revisionhours = $('#revisionhours').val();
+ 
 
-     alert("Save completed");
+      $.ajax({
+       url :"studtopic/save_studtopic",
+       data: {Studentsid:studentsid,Topicstitle:title,spendhours:spendhours,revisionhours:revisionhours},
+       type:'POST',
+       success: function(){
+        alert("Save complete");
+      
+      $('#spendhours').val('');
+      $('#revisionhours').val('');
+     
+  gettopictitle($("#studentsid").val());
+       }
 
-     $('#spendhours').val('');
-     $('#revisionhours').val('');
-
-
-   }
-
+      });
 });
-
-});
-	
 
 //Student select box 
 function getStudents(){
@@ -55,6 +53,11 @@ $.ajax({
      $('#studentsid').append($("<option></option>")   
          .attr("value",da.Data[i].Student.id)
          .text(da.Data[i].Student.fullname)); 
+
+      $('#spendhours').val('');
+      $('#revisionhours').val('');
+
+
     }
  getSelectedSubject($('#studentsid').val());
     }
@@ -62,7 +65,7 @@ $.ajax({
 });   
 }
 
-
+//subject box
 function getSelectedSubject(SelectStudent){
 $.ajax({
     url : "studsubject/getselectedidsubject",
@@ -85,7 +88,7 @@ $.ajax({
 
 });
 }
-
+//title box
 function gettitleRelated(Subjectname){
 $.ajax({
     url : "topic/getRelatedTopics",
@@ -94,21 +97,56 @@ $.ajax({
     dataType : 'json',
     success : function(da)  {
 
-    $('#topic').empty();
+    $('#title').empty();
 
     for(i=0; i<da.Data.length; i++){
       
-     $('#topic').append($("<option></option>")   
+     $('#title').append($("<option></option>")   
          .attr("value",da.Data[i].Topic.title)
          .text(da.Data[i].Topic.title)); 
     }
 
+   gettopictitle($('#studentsid').val());
     }
 
 });
 
 
 }
+
+
+
+function gettopictitle(get){
+
+$("#studupdate_table > tbody").html("");
+$.ajax({
+    url :"studtopic/getfolowuptopic",
+    data : {selectedid:get},
+    type : 'POST',
+    dataType : 'json',
+    success : function(datas){
+
+     for(i=0; i<datas.Data.length; i++){
+
+     var str = '<tr class="active">';
+
+     str +='<td>'+datas.Data[i].Students_topic.Studentsid+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.Topicstitle+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.spendhours+'</td>';
+     str += '<td>'+datas.Data[i].Students_topic.revisionhours+'</td>';
+
+     str +='</tr>'
+     $("#studupdate_table").find('tbody').append(str);
+
+            }
+          }
+
+       });
+    }
+
+
+
+
 
 
 

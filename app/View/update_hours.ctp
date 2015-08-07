@@ -24,8 +24,8 @@
 </div>
 
 <div class="form-group">
-<label for="topic">Topics</label>
-<select  name="topic" id="topic" selected="">
+<label for="title">Topics</label>
+<select  name="title" id="title" selected="">
 <option value="1">One</option>
 <option value="2">Two</option>
 </select>
@@ -51,6 +51,33 @@
 <span class="glyphicon glyphicon-ok"></span>
 </div>
 
+<table class="table" id="studupdate_table" name="studupdate_table">    
 
+
+<thead>
+<tr>
+<th>Student ID</th>
+
+<th>Topic Title</th>
+
+<th>Spend Hours</th>
+
+<th>Revision Hours</th>
+
+
+</tr>
+</thead>
+
+<tbody>
+	</tbody>
+</table>
+
+
+
+
+
+</div>
+</div>
+</div>
 
 <script src="<?php echo $this->webroot;?>js/logics/updatehours.js"></script>
